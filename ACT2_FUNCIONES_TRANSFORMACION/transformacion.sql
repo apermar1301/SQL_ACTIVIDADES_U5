@@ -33,21 +33,106 @@ FROM
     clientes;
 
 -- ACT6: Logitud del nombre de los productos
-select nombre, length(nombre) as nombreLongitud from clientes;
+SELECT
+    nombre,
+    LENGTH (nombre) AS nombreLongitud
+FROM
+    clientes;
 
 -- ACT7: Precio con IVA
-Select nombre, round(precio*1.21,2) as 'precio+IVA' from productos;
+SELECT
+    nombre,
+    round(precio * 1.21, 2) AS 'precio+IVA'
+FROM
+    productos;
 
 -- ACT8: Precio sin decimales
-Select nombre, truncate(precio,0) as precioTruncado from productos;
+SELECT
+    nombre,
+    TRUNCATE (precio, 0) AS precioTruncado
+FROM
+    productos;
 
 -- ACT9: Resto del stock
-select nombre, MOD(precio, 10) as 'RESTO: stock/10' from productos; 
+SELECT
+    nombre,
+    MOD(stock, 10) AS 'RESTO: stock/10'
+FROM
+    productos;
 
--- ACT10: Mees de los pedidos
-SET lc_time_names = 'es_ES'; 
-select id, monthname(fecha) as mes from pedidos;
+-- ACT10: Mes de los pedidos
+SET
+    lc_time_names = 'es_ES';
+
+SELECT
+    ID,
+    monthname (fecha) AS mes
+FROM
+    pedidos;
 
 -- ACT11: Fecha actual en los pedidos
-Select nombre, fecha as fechaPedido, curdate() fechaActual from pedidos;
+SELECT
+    nombre,
+    fecha AS fechaPedido,
+    curdate () fechaActual
+FROM
+    pedidos;
 
+-- ACT12: Año del pedido
+SELECT
+    ID,
+    YEAR (fecha) AS 'añoPedido'
+FROM
+    pedidos;
+
+-- ACT13: Pedidos realizados en marzo
+SET
+    lc_time_names = 'es_ES';
+
+SELECT
+    ID,
+    monthname (fecha) AS mes
+FROM
+    pedidos
+WHERE
+    MONTH (fecha) = 3;
+
+-- ACT14: Formato de fecha español
+SET
+    lc_time_names = 'es_ES';
+
+SELECT
+    ID,
+    DATE_FORMAT (fecha, '%d/%M/%Y') AS fechaEspan
+FROM
+    pedidos;
+
+
+-- ACT15: Dias transcurridos desde el pedido
+SELECT
+    ID,
+    DATEDIFF (curdate (), fecha) AS diasTranscurridos
+FROM
+    pedidos;
+
+-- ACT16: Fecha de entrega estimada
+SELECT
+    ID,
+    fecha AS fechaPedido,
+    DATE_ADD (fecha, INTERVAL 7 DAY) AS fechaEntregaEstimada
+FROM
+    pedidos;
+
+-- ACT17: Representante de ventas
+SELECT
+    nombre,
+    IFNULL(idEmpleado, 'Sin asignar') as idEmpleadoAsignado
+FROM
+    clientes;
+
+-- ACT18: Dirección segura
+Select 
+    nombre,
+    CONCAT(IFNULL(ciudad, 'No asignado'), ', ', IFNULL(pais, 'No asignado')) as Direccion
+from 
+    clientes;
