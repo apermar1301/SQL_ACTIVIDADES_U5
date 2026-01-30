@@ -126,13 +126,13 @@ FROM
 -- ACT17: Representante de ventas
 SELECT
     nombre,
-    IFNULL(idEmpleado, 'Sin asignar') as idEmpleadoAsignado
+    IFNULL(idEmpleado, 'Sin asignar') AS idEmpleadoAsignado
 FROM
     clientes;
 
 -- ACT18: Dirección segura
-Select 
+SELECT 
     nombre,
-    CONCAT(IFNULL(ciudad, 'No asignado'), ', ', IFNULL(pais, 'No asignado')) as Direccion
-from 
+    CONCAT(IFNULL(ciudad, 'No asignado'), ', ', IFNULL(pais, 'No asignado')) AS Direccion
+FROM 
     clientes;

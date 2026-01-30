@@ -31,3 +31,52 @@ FROM
 
 GROUP BY
     estado;
+
+-- ACT6: Clientes por país
+SELECT
+    pais,
+    COUNT(*)
+FROM
+    clientes
+ORDER BY
+    pais;
+
+-- ACT7: Productos por gama
+SELECT
+    idGama,
+    COUNT(*)
+FROM
+    productos
+GROUP BY
+    idGama;
+
+-- ACT8: Stock medio por gama
+SELECT
+    idGama,
+    AVG(stock) AS mediaStock
+FROM
+    productos
+GROUP BY
+    idGama;
+
+-- ACT9: Pedidos por año y estado
+SELECT
+    YEAR (fecha) AS año,
+    estado,
+    COUNT(*) AS total
+FROM
+    pedidos
+GROUP BY
+    YEAR (fecha),
+    estado;
+
+-- ACT10: Pagos por cliente
+SELECT
+    idCliente,
+    COUNT(cantidad) as cantidad
+FROM
+    pagos
+GROUP BY
+    idCliente;
+
+-- ACT11: Estados con alto volumen
