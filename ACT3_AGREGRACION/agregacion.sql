@@ -81,9 +81,8 @@ GROUP BY
 
 -- ACT11: Estados con alto volumen
 SELECT
-    ID,
     estado,
-    COUNT(*)
+    COUNT(*) AS cantidad
 FROM
     pedidos
 GROUP BY
@@ -94,7 +93,7 @@ HAVING
 -- ACT12: Clientes con grandes pagos acumulados
 SELECT
     idCliente,
-    SUM(cantidad)
+    SUM(cantidad) AS totalPagado
 FROM
     pagos
 GROUP BY
@@ -105,16 +104,30 @@ HAVING
 -- ACT13: Valor total del stock por gama
 SELECT
     idGama,
-    stock * precio as ValorTotal
-from
+    stock * precio AS ValorTotal
+FROM
     productos
-GROUP by idGama;
+GROUP BY
+    idGama;
 
 -- ACT14: Pedido más reciente por cliente
-Select
+SELECT
     idCliente,
     MAX(fecha) AS fecha_ultimo_pedido
-from
+FROM
     pedidos
-group by
+GROUP BY
     idCliente
+    -- ACT15: Clasificación de productos por precio
+SELECT
+    ID,
+    nombre,
+    precio,
+    CASE precio
+        WHEN precio < 20 THEN 'ECONÓMICO'
+        WHEN precio >= 20
+        AND precio < 100 THEN 'MEDIO'
+        ELSE 'caro'
+    END AS clasificacion
+FROM
+    productos
