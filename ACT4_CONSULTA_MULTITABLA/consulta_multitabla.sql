@@ -115,17 +115,18 @@ FROM
     clientes c
     LEFT JOIN pedidos p ON c.id = p.idCliente
 GROUP BY
-    c.id, c.nombre
+    c.id,
+    c.nombre
 ORDER BY
     totalPedidos DESC;
 
 -- ACT13: Importe total pagado por cliente
-Select
-    c.nombre as nombreCliente,
-    sum(p.cantidad) as totalPagado
-from
+SELECT
+    c.nombre AS nombreCliente,
+    SUM(p.cantidad) AS totalPagado
+FROM
     pagos p
-    inner join clientes c on p.idCliente = c.id
-group by
-    c.id, c.nombre
-
+    INNER JOIN clientes c ON p.idCliente = c.id
+GROUP BY
+    c.id,
+    c.nombre
