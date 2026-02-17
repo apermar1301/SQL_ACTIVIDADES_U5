@@ -94,3 +94,62 @@ WHERE
         WHERE
             p1.idCliente = p2.idCliente
     );
+
+-- ACT8: Clientes con pedidos
+SELECT
+    *
+FROM
+    clientes c
+WHERE
+    EXISTS (
+        SELECT
+            *
+        FROM
+            pagos p
+        WHERE
+            p.idCliente = c.id
+    );
+
+-- ACT9: Clientes sin pedidos
+SELECT
+    *
+FROM
+    clientes c
+WHERE
+    NOT EXISTS (
+        SELECT
+            *
+        FROM
+            pagos p
+        WHERE
+            p.idCliente = c.id
+    );
+
+-- ACT10: Análisis global de clientes activos
+SELECT
+    *
+FROM
+    clientes c
+WHERE
+    EXISTS (
+        SELECT
+            *
+        FROM
+            pedidos pe
+        WHERE
+            pe.idCliente = c.id
+    )
+    AND EXISTS (
+        SELECT
+            *
+        FROM
+            pagos pa
+        WHERE
+            pa.idCliente = c.id
+            AND pa.cantidad > (
+                SELECT
+                    AVG(cantidad)
+                FROM
+                    pagos
+            )
+    );
