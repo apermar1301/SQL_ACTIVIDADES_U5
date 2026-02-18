@@ -37,14 +37,15 @@ WHERE
             MAX(stock)
         FROM
             productos
-    )
-    -- ACT4: Clientes que han realizado pagos
+    );
+
+-- ACT4: Clientes que han realizado pagos
 SELECT
     *
 FROM
     clientes
 WHERE
-    id in (
+    ID IN (
         SELECT
             idCliente
         FROM
@@ -57,7 +58,7 @@ SELECT
 FROM
     clientes
 WHERE
-    id not in (
+    ID NOT IN (
         SELECT
             idCliente
         FROM
@@ -143,13 +144,13 @@ WHERE
         SELECT
             *
         FROM
-            pagos pa
+            pagos pa1
         WHERE
-            pa.idCliente = c.id
-            AND pa.cantidad > (
+            pa1.idCliente = c.id
+            AND pa1.cantidad > (
                 SELECT
-                    AVG(cantidad)
+                    AVG(pa2.cantidad)
                 FROM
-                    pagos
+                    pagos pa2
             )
     );
