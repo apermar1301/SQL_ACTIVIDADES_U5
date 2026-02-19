@@ -27,3 +27,35 @@ FROM
 GROUP BY
     o.codigo,
     o.ciudad;
+
+-- ACT4: Muestra el nombre de los empleados que tienen nivel 'Experto' en la gama 'Frutales'.
+SELECT
+    e.nombre,
+    g.nombre,
+    eg.nivel
+FROM
+    empleadosGamas AS eg
+    INNER JOIN empleados AS e ON e.id = eg.idEmpleado
+    INNER JOIN gamas AS g ON g.id = eg.idGama
+WHERE
+    eg.nivel = 'Experto'
+    AND g.nombre = 'Frutales';
+
+-- ACT5: Obtén el ID de los pedidos realizados en el año 2025 que aún están en estado 'Pendiente'
+SELECT
+    ID,
+    fecha,
+    estado
+FROM
+    pedidos
+WHERE
+    YEAR (fecha) = 2025
+    AND estado = 'Pendiente';
+
+-- ACT6: Muestra el nombre del cliente y el nombre de su representante de ventas asignado. Si no tiene ninguno, debe aparecer el texto 'Sin Representante'.
+SELECT
+    c.nombre,
+    IFNULL (e.nombre, 'SIN REPRESENTANTE')
+FROM
+    clientes AS c
+    LEFT JOIN empleados AS e ON c.idEmpleado = e.id;
