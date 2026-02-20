@@ -130,18 +130,195 @@ WHERE
 
 -- ACT9: Lógica por ciudad
 SELECT
+    c.id,
+    c.nombre
 FROM
-    clientes
+    clientes c
+WHERE
+    EXISTS (
+        SELECT
+            1
+        FROM
+            pagos p
+        WHERE
+            p.idCliente = c.id
+            AND p.cantidad > (
+                SELECT
+                    AVG(p2.cantidad)
+                FROM
+                    pagos p2
+                WHERE
+                    p2.idCliente IN (
+                        SELECT
+                            c2.id
+                        FROM
+                            clientes c2
+                        WHERE
+                            c2.ciudad = c.ciudad
+                    )
+            )
+    );
+
+-- ACT10: Precios por gama
+SELECT
+    *
+FROM
+    productos AS a
+WHERE
+    precio > (
+        SELECT
+            AVG(precio)
+        FROM
+            productos AS b
+        WHERE
+            a.idGama = b.idGama
+    );
+
+-- ACT11: Pedidos por cliente
+SELECT
+    c.nombre
+FROM
+    clientes AS c
+WHERE
+    (
+        SELECT
+            COUNT(*)
+        FROM
+            pedidos AS p
+        WHERE
+            c.id = p.idCliente
+    ) > (
+        SELECT
+            AVG(numPedidos)
+        FROM
+            (
+                SELECT
+                    COUNT(*) AS numPedidos
+                FROM
+                    pedidos
+                GROUP BY
+                    idCliente
+            ) AS sub
+    );
+
+-- ACT12: Control de cartera (EXISTS)
+SELECT
+    *
+FROM
+    empleados AS e
 WHERE
     EXISTS (
         SELECT
             *
         FROM
-            pagos
+            clientes AS c
         WHERE
-            cantidad > (
+            e.id = c.idEmpleado
+            AND NOT EXISTS (
                 SELECT
+                    *
                 FROM
-                    
+                    pagos AS p
+                WHERE
+                    p.idCliente = c.id
             )
+    );
+
+-- ACT13: Desviación de precio
+SELECT
+    nombre,
+    precio,
+    precio - (
+        SELECT
+            AVG(precio)
+        FROM
+            productos
+    ) AS precioMedio
+FROM
+    productos;
+
+-- ACT14: Contador de pedidos
+SELECT
+    c.nombre,
+    (
+        SELECT
+            COUNT(*)
+        FROM
+            pedidos AS p
+        WHERE
+            c.id = p.id
+    )
+FROM
+    clientes AS c;
+
+-- ACT15: Última actividad
+SELECT
+    c.nombre,
+    (
+        SELECT
+            MAX(fecha)
+        FROM
+            pedidos AS p
+        WHERE
+            p.idCliente = c.id
+    ) AS ultimaActividad
+FROM
+    clientes AS c;
+
+-- ACT16: Referencia de oficina
+SELECT
+    *,
+    (
+        SELECT
+            COUNT(b.*)
+        FROM
+            empleados AS b
+        WHERE
+            a.idOficina = b.idOficina
+    ) AS numeroColegas
+FROM
+    empleado AS a;
+
+-- ACT17: Valor de cartera 
+SELECT
+    nombre,
+    (
+        SELECT
+            MAX(cantidad)
+        FROM
+            pagos AS p
+        WHERE
+            p.idCliente = c.id
+    ) AS importeMasAlto
+FROM
+    clientes AS c;
+
+-- ACT18: Media de ventas totales
+SELECT
+    idCliente,
+    mediaAritmetica
+FROM
+    (
+        SELECT
+            idCliente,
+            AVG(cantidad) AS mediaAritmetica
+        FROM
+            pagos
+        GROUP BY
+            idCliente
+    ) AS mediaAritmeticaTabla;
+
+-- ACT19: Oficinas masificadas
+SELECT
+    o.ciudad
+FROM    
+    oficinas as o
+WHERE
+    EXISTS (
+        SELECT
+            AVG(COUNT(*))
+        FROM
+            empleados as e
+        WHERE
+            e.idOficina = o.id
     )
