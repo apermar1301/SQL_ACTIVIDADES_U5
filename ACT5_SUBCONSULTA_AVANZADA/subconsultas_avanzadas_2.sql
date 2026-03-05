@@ -311,14 +311,47 @@ FROM
 -- ACT19: Oficinas masificadas
 SELECT
     o.ciudad
-FROM    
-    oficinas as o
+FROM
+    oficinas AS o
 WHERE
     EXISTS (
         SELECT
-            AVG(COUNT(*))
+            AVG(salario)
         FROM
-            empleados as e
+            empleados AS e
         WHERE
             e.idOficina = o.id
-    )
+            AND salario > (
+                SELECT
+                    AVG(salario)
+                FROM
+                    empleados AS e2
+                WHERE
+                    e2.idOficina = o.id
+            )
+    );
+
+-- ACT20: Gamas con gran inventario
+SELECT
+    g.*
+FROM
+    gamas AS g
+WHERE
+    (
+        SELECT
+            SUM(p.stock)
+        FROM
+            productos AS p
+        WHERE
+            p.idGama = g.id
+    ) > 1000;
+
+-- ACT22: Máximo de los promedios: Hallar cuál es el promedio de pago más alto de entre todos los promedios de los clientes.
+-- ACTACT23: Ciudades sin oficina: Listar los clientes que viven en ciudades donde no existe ninguna oficina física.
+-- ACTACT24: Doble negación: Mostrar las oficinas donde todos sus empleados han gestionado al menos un cliente (usando NOT EXISTS).
+-- ACT25: Productos huérfanos: Obtener los productos que nunca han sido incluidos en un pedido (usando NOT IN sobre detallesPedidos).
+-- ACT26: Pagos Premium: Listar los clientes cuyo pago máximo sea superior al pago máximo del cliente con ID 2.
+-- ACT27: Gamas exclusivas: Mostrar los empleados que son expertos en gamas en las que no hay ningún otro experto (usando empleadosGamas).
+-- ACT28: Clientes internacionales: Listar los clientes que pertenecen a un país donde no hay ninguna oficina registrada.
+-- ACT29: Pedidos tardíos: Hallar los pedidos cuya fecha sea posterior a la fecha media de todos los pedidos.
+-- ACT30: Ranking de facturación: Mostrar el nombre del cliente y cuántos clientes han pagado más que él en total acumulado.

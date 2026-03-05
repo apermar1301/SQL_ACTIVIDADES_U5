@@ -2118,31 +2118,56 @@ VALUES
   ('Tarjeta', 150.00, '2025-04-25', 34),
   ('PayPal', 220.00, '2025-05-05', 45),
   ('Transferencia', 35.00, '2025-05-15', 50),
-  ('Tarjeta', 80.00, '2025-05-20', 6), -- Corregido (antes 56)
-  ('PayPal', 110.00, '2025-06-05', 7), -- Corregido (antes 57)
-  ('Transferencia', 45.00, '2025-06-15', 10), -- Corregido (antes 60)
-  ('Tarjeta', 300.00, '2025-06-25', 17), -- Corregido (antes 67)
-  ('PayPal', 150.00, '2025-07-05', 18), -- Corregido (antes 68)
-  ('Transferencia', 90.00, '2025-07-15', 20), -- Corregido (antes 70)
-  ('Tarjeta', 130.00, '2025-07-25', 28), -- Corregido (antes 78)
-  ('PayPal', 250.00, '2025-08-05', 29), -- Corregido (antes 79)
-  ('Transferencia', 60.00, '2025-08-15', 30), -- Corregido (antes 80)
-  ('Tarjeta', 40.00, '2025-08-25', 31), -- Corregido (antes 81)
-  ('PayPal', 500.00, '2025-09-05', 32), -- Corregido (antes 82)
-  ('Transferencia', 75.00, '2025-09-15', 33), -- Corregido (antes 83)
-  ('Tarjeta', 1000.00, '2025-09-25', 34), -- Corregido (antes 84)
-  ('PayPal', 90.00, '2025-10-05', 35), -- Corregido (antes 85)
-  ('Transferencia', 110.00, '2025-10-15', 39), -- Corregido (antes 89)
-  ('Tarjeta', 130.00, '2025-10-25', 40), -- Corregido (antes 90)
-  ('PayPal', 400.00, '2025-11-05', 41), -- Corregido (antes 91)
-  ('Transferencia', 220.00, '2025-11-15', 42), -- Corregido (antes 92)
-  ('Tarjeta', 180.00, '2025-11-25', 43), -- Corregido (antes 93)
-  ('PayPal', 150.00, '2025-12-05', 44), -- Corregido (antes 94)
-  ('Transferencia', 300.00, '2025-12-15', 45), -- Corregido (antes 95)
-  ('Tarjeta', 25.00, '2025-12-20', 46), -- Corregido (antes 96)
-  ('PayPal', 45.00, '2026-01-05', 47), -- Corregido (antes 97)
-  ('Transferencia', 12.50, '2026-01-10', 48), -- Corregido (antes 98)
-  ('Tarjeta', 60.00, '2026-01-12', 50), -- Corregido (antes 100)
+  ('Tarjeta', 80.00, '2025-05-20', 6),
+  -- Corregido (antes 56)
+  ('PayPal', 110.00, '2025-06-05', 7),
+  -- Corregido (antes 57)
+  ('Transferencia', 45.00, '2025-06-15', 10),
+  -- Corregido (antes 60)
+  ('Tarjeta', 300.00, '2025-06-25', 17),
+  -- Corregido (antes 67)
+  ('PayPal', 150.00, '2025-07-05', 18),
+  -- Corregido (antes 68)
+  ('Transferencia', 90.00, '2025-07-15', 20),
+  -- Corregido (antes 70)
+  ('Tarjeta', 130.00, '2025-07-25', 28),
+  -- Corregido (antes 78)
+  ('PayPal', 250.00, '2025-08-05', 29),
+  -- Corregido (antes 79)
+  ('Transferencia', 60.00, '2025-08-15', 30),
+  -- Corregido (antes 80)
+  ('Tarjeta', 40.00, '2025-08-25', 31),
+  -- Corregido (antes 81)
+  ('PayPal', 500.00, '2025-09-05', 32),
+  -- Corregido (antes 82)
+  ('Transferencia', 75.00, '2025-09-15', 33),
+  -- Corregido (antes 83)
+  ('Tarjeta', 1000.00, '2025-09-25', 34),
+  -- Corregido (antes 84)
+  ('PayPal', 90.00, '2025-10-05', 35),
+  -- Corregido (antes 85)
+  ('Transferencia', 110.00, '2025-10-15', 39),
+  -- Corregido (antes 89)
+  ('Tarjeta', 130.00, '2025-10-25', 40),
+  -- Corregido (antes 90)
+  ('PayPal', 400.00, '2025-11-05', 41),
+  -- Corregido (antes 91)
+  ('Transferencia', 220.00, '2025-11-15', 42),
+  -- Corregido (antes 92)
+  ('Tarjeta', 180.00, '2025-11-25', 43),
+  -- Corregido (antes 93)
+  ('PayPal', 150.00, '2025-12-05', 44),
+  -- Corregido (antes 94)
+  ('Transferencia', 300.00, '2025-12-15', 45),
+  -- Corregido (antes 95)
+  ('Tarjeta', 25.00, '2025-12-20', 46),
+  -- Corregido (antes 96)
+  ('PayPal', 45.00, '2026-01-05', 47),
+  -- Corregido (antes 97)
+  ('Transferencia', 12.50, '2026-01-10', 48),
+  -- Corregido (antes 98)
+  ('Tarjeta', 60.00, '2026-01-12', 50),
+  -- Corregido (antes 100)
   ('Transferencia', 85.00, '2025-02-28', 1),
   ('Tarjeta', 120.00, '2025-05-10', 2),
   ('PayPal', 45.00, '2025-06-15', 3),
@@ -2152,34 +2177,48 @@ VALUES
   ('Transferencia', 15.50, '2025-10-01', 23),
   ('Tarjeta', 44.00, '2025-10-15', 34),
   ('PayPal', 120.00, '2025-11-20', 45),
-  ('Transferencia', 22.00, '2025-12-05', 6), -- Corregido (antes 56)
+  ('Transferencia', 22.00, '2025-12-05', 6),
+  -- Corregido (antes 56)
   ('Tarjeta', 250.00, '2025-03-25', 12),
   ('PayPal', 140.00, '2025-04-12', 24),
   ('Transferencia', 35.00, '2025-05-18', 35),
   ('Tarjeta', 88.00, '2025-06-22', 46),
-  ('PayPal', 12.50, '2025-07-30', 7), -- Corregido (antes 57)
-  ('Transferencia', 65.00, '2025-08-14', 18), -- Corregido (antes 68)
-  ('Tarjeta', 19.50, '2025-09-21', 29), -- Corregido (antes 79)
-  ('PayPal', 45.00, '2025-10-30', 31), -- Corregido (antes 81)
+  ('PayPal', 12.50, '2025-07-30', 7),
+  -- Corregido (antes 57)
+  ('Transferencia', 65.00, '2025-08-14', 18),
+  -- Corregido (antes 68)
+  ('Tarjeta', 19.50, '2025-09-21', 29),
+  -- Corregido (antes 79)
+  ('PayPal', 45.00, '2025-10-30', 31),
+  -- Corregido (antes 81)
   ('Transferencia', 300.00, '2025-11-12', 3),
   ('Tarjeta', 15.00, '2025-12-01', 14),
   ('PayPal', 115.00, '2025-04-15', 25),
   ('Transferencia', 42.00, '2025-05-10', 36),
   ('Tarjeta', 18.00, '2025-06-05', 47),
-  ('PayPal', 55.00, '2025-07-12', 8), -- Corregido (antes 58)
-  ('Transferencia', 130.00, '2025-08-20', 19), -- Corregido (antes 69)
-  ('Tarjeta', 22.00, '2025-09-05', 21), -- Corregido (antes 71)
-  ('PayPal', 8.50, '2025-10-10', 32), -- Corregido (antes 82)
-  ('Transferencia', 99.00, '2025-11-15', 42), -- Corregido (antes 92)
+  ('PayPal', 55.00, '2025-07-12', 8),
+  -- Corregido (antes 58)
+  ('Transferencia', 130.00, '2025-08-20', 19),
+  -- Corregido (antes 69)
+  ('Tarjeta', 22.00, '2025-09-05', 21),
+  -- Corregido (antes 71)
+  ('PayPal', 8.50, '2025-10-10', 32),
+  -- Corregido (antes 82)
+  ('Transferencia', 99.00, '2025-11-15', 42),
+  -- Corregido (antes 92)
   ('Tarjeta', 14.00, '2025-12-20', 4),
   ('PayPal', 33.00, '2025-02-10', 16),
   ('Transferencia', 56.00, '2025-03-12', 27),
   ('Tarjeta', 12.00, '2025-04-14', 38),
   ('PayPal', 85.00, '2025-05-16', 49),
-  ('Transferencia', 40.00, '2025-06-18', 11), -- Corregido (antes 61)
-  ('Tarjeta', 20.00, '2025-07-20', 22), -- Corregido (antes 72)
-  ('PayPal', 150.00, '2025-08-22', 33), -- Corregido (antes 83)
-  ('Transferencia', 75.00, '2025-09-24', 43), -- Corregido (antes 93)
+  ('Transferencia', 40.00, '2025-06-18', 11),
+  -- Corregido (antes 61)
+  ('Tarjeta', 20.00, '2025-07-20', 22),
+  -- Corregido (antes 72)
+  ('PayPal', 150.00, '2025-08-22', 33),
+  -- Corregido (antes 83)
+  ('Transferencia', 75.00, '2025-09-24', 43),
+  -- Corregido (antes 93)
   ('Tarjeta', 40.00, '2025-10-26', 5),
   ('PayPal', 90.00, '2025-11-28', 17),
   ('Transferencia', 200.00, '2025-12-30', 28),
